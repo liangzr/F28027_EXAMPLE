@@ -36,8 +36,7 @@ void main(void)
 
 	IER = 0x0000;
 	IFR = 0x0000;
-	InitAdc();
-	ConfigAdc();
+
 	InitPieVectTable();
 
 #ifdef TOFLASH
