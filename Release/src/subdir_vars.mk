@@ -26,7 +26,9 @@ C_SRCS += \
 ../src/F2802x_Sci.c \
 ../src/F2802x_Spi.c \
 ../src/F2802x_SysCtrl.c \
-../src/F2802x_TempSensorConv.c 
+../src/F2802x_TempSensorConv.c \
+../src/user_5110.c \
+../src/user_5110lib.c 
 
 OBJS += \
 ./src/DSP2802x_MemCopy.obj \
@@ -49,7 +51,9 @@ OBJS += \
 ./src/F2802x_Spi.obj \
 ./src/F2802x_SysCtrl.obj \
 ./src/F2802x_TempSensorConv.obj \
-./src/F2802x_usDelay.obj 
+./src/F2802x_usDelay.obj \
+./src/user_5110.obj \
+./src/user_5110lib.obj 
 
 ASM_DEPS += \
 ./src/F2802x_CSMPasswords.pp \
@@ -74,7 +78,9 @@ C_DEPS += \
 ./src/F2802x_Sci.pp \
 ./src/F2802x_Spi.pp \
 ./src/F2802x_SysCtrl.pp \
-./src/F2802x_TempSensorConv.pp 
+./src/F2802x_TempSensorConv.pp \
+./src/user_5110.pp \
+./src/user_5110lib.pp 
 
 C_DEPS__QUOTED += \
 "src\DSP2802x_MemCopy.pp" \
@@ -93,7 +99,9 @@ C_DEPS__QUOTED += \
 "src\F2802x_Sci.pp" \
 "src\F2802x_Spi.pp" \
 "src\F2802x_SysCtrl.pp" \
-"src\F2802x_TempSensorConv.pp" 
+"src\F2802x_TempSensorConv.pp" \
+"src\user_5110.pp" \
+"src\user_5110lib.pp" 
 
 OBJS__QUOTED += \
 "src\DSP2802x_MemCopy.obj" \
@@ -116,7 +124,9 @@ OBJS__QUOTED += \
 "src\F2802x_Spi.obj" \
 "src\F2802x_SysCtrl.obj" \
 "src\F2802x_TempSensorConv.obj" \
-"src\F2802x_usDelay.obj" 
+"src\F2802x_usDelay.obj" \
+"src\user_5110.obj" \
+"src\user_5110lib.obj" 
 
 ASM_DEPS__QUOTED += \
 "src\F2802x_CSMPasswords.pp" \
@@ -141,7 +151,9 @@ C_SRCS__QUOTED += \
 "../src/F2802x_Sci.c" \
 "../src/F2802x_Spi.c" \
 "../src/F2802x_SysCtrl.c" \
-"../src/F2802x_TempSensorConv.c" 
+"../src/F2802x_TempSensorConv.c" \
+"../src/user_5110.c" \
+"../src/user_5110lib.c" 
 
 ASM_SRCS__QUOTED += \
 "../src/F2802x_CSMPasswords.asm" \

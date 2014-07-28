@@ -4,10 +4,12 @@
 
 SHELL = cmd.exe
 
-CG_TOOL_ROOT := C:/ti/ccsv5/tools/compiler/c2000_6.1.3
+CG_TOOL_ROOT := c:/ti/ccsv6/tools/compiler/c2000_6.2.5
 
 ORDERED_OBJS += \
 $(GEN_CMDS__FLAG) \
+"./src/user_5110lib.obj" \
+"./src/user_5110.obj" \
 "./src/F2802x_usDelay.obj" \
 "./src/F2802x_TempSensorConv.obj" \
 "./src/F2802x_SysCtrl.obj" \
@@ -30,9 +32,9 @@ $(GEN_CMDS__FLAG) \
 "./src/F2802x_Adc.obj" \
 "./src/DSP2802x_MemCopy.obj" \
 "./main.obj" \
--l"libc.a" \
 "../F28027.cmd" \
 "../F2802x_Headers_nonBIOS.cmd" \
+-l"libc.a" \
 
 -include ../makefile.init
 
@@ -131,23 +133,41 @@ endif
 -include ../makefile.defs
 
 # Add inputs and outputs from these tool invocations to the build variables 
+EXE_OUTPUTS += \
+F28027_5110.out \
+
+EXE_OUTPUTS__QUOTED += \
+"F28027_5110.out" \
+
+BIN_OUTPUTS += \
+F28027_5110.hex \
+
+BIN_OUTPUTS__QUOTED += \
+"F28027_5110.hex" \
+
 
 # All Target
-all: F28027_EXAMPLE.out
+all: F28027_5110.out
 
 # Tool invocations
-F28027_EXAMPLE.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
+F28027_5110.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: C2000 Linker'
-	"C:/ti/ccsv5/tools/compiler/c2000_6.1.3/bin/cl2000" -v28 -ml -mt -O2 --define=TOFLASH --diag_warning=225 --display_error_number --diag_wrap=off -z --stack_size=0x300 -m"F28027_EXAMPLE.map" --warn_sections -i"C:/ti/ccsv5/tools/compiler/c2000_6.1.3/lib" -i"C:/ti/ccsv5/tools/compiler/c2000_6.1.3/include" --reread_libs --display_error_number --diag_wrap=off --rom_model -o "F28027_EXAMPLE.out" $(ORDERED_OBJS)
+	"c:/ti/ccsv6/tools/compiler/c2000_6.2.5/bin/cl2000" -v28 -ml -mt -O2 --define=TOFLASH --diag_warning=225 --display_error_number --diag_wrap=off -z -m"F28027_5110.map" --stack_size=0x300 --warn_sections -i"c:/ti/ccsv6/tools/compiler/c2000_6.2.5/lib" -i"c:/ti/ccsv6/tools/compiler/c2000_6.2.5/include" --reread_libs --display_error_number --diag_wrap=off --xml_link_info="F28027_5110_linkInfo.xml" --rom_model -o "F28027_5110.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
+	@echo ' '
+
+F28027_5110.hex: $(EXE_OUTPUTS)
+	@echo 'Invoking: C2000 Hex Utility'
+	"c:/ti/ccsv6/tools/compiler/c2000_6.2.5/bin/hex2000"  -o "F28027_5110.hex" $(EXE_OUTPUTS__QUOTED)
+	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(C2000_EXECUTABLE_OUTPUTS__QUOTED) "F28027_EXAMPLE.out"
-	-$(RM) "main.pp" "src\DSP2802x_MemCopy.pp" "src\F2802x_Adc.pp" "src\F2802x_Comp.pp" "src\F2802x_CpuTimers.pp" "src\F2802x_DefaultIsr.pp" "src\F2802x_ECap.pp" "src\F2802x_EPwm.pp" "src\F2802x_GlobalVariableDefs.pp" "src\F2802x_Gpio.pp" "src\F2802x_I2C.pp" "src\F2802x_OscComp.pp" "src\F2802x_PieCtrl.pp" "src\F2802x_PieVect.pp" "src\F2802x_Sci.pp" "src\F2802x_Spi.pp" "src\F2802x_SysCtrl.pp" "src\F2802x_TempSensorConv.pp" 
-	-$(RM) "main.obj" "src\DSP2802x_MemCopy.obj" "src\F2802x_Adc.obj" "src\F2802x_CSMPasswords.obj" "src\F2802x_CodeStartBranch.obj" "src\F2802x_Comp.obj" "src\F2802x_CpuTimers.obj" "src\F2802x_DefaultIsr.obj" "src\F2802x_DisInt.obj" "src\F2802x_ECap.obj" "src\F2802x_EPwm.obj" "src\F2802x_GlobalVariableDefs.obj" "src\F2802x_Gpio.obj" "src\F2802x_I2C.obj" "src\F2802x_OscComp.obj" "src\F2802x_PieCtrl.obj" "src\F2802x_PieVect.obj" "src\F2802x_Sci.obj" "src\F2802x_Spi.obj" "src\F2802x_SysCtrl.obj" "src\F2802x_TempSensorConv.obj" "src\F2802x_usDelay.obj" 
+	-$(RM) $(EXE_OUTPUTS__QUOTED)$(BIN_OUTPUTS__QUOTED)
+	-$(RM) "main.pp" "src\DSP2802x_MemCopy.pp" "src\F2802x_Adc.pp" "src\F2802x_Comp.pp" "src\F2802x_CpuTimers.pp" "src\F2802x_DefaultIsr.pp" "src\F2802x_ECap.pp" "src\F2802x_EPwm.pp" "src\F2802x_GlobalVariableDefs.pp" "src\F2802x_Gpio.pp" "src\F2802x_I2C.pp" "src\F2802x_OscComp.pp" "src\F2802x_PieCtrl.pp" "src\F2802x_PieVect.pp" "src\F2802x_Sci.pp" "src\F2802x_Spi.pp" "src\F2802x_SysCtrl.pp" "src\F2802x_TempSensorConv.pp" "src\user_5110.pp" "src\user_5110lib.pp" 
+	-$(RM) "main.obj" "src\DSP2802x_MemCopy.obj" "src\F2802x_Adc.obj" "src\F2802x_CSMPasswords.obj" "src\F2802x_CodeStartBranch.obj" "src\F2802x_Comp.obj" "src\F2802x_CpuTimers.obj" "src\F2802x_DefaultIsr.obj" "src\F2802x_DisInt.obj" "src\F2802x_ECap.obj" "src\F2802x_EPwm.obj" "src\F2802x_GlobalVariableDefs.obj" "src\F2802x_Gpio.obj" "src\F2802x_I2C.obj" "src\F2802x_OscComp.obj" "src\F2802x_PieCtrl.obj" "src\F2802x_PieVect.obj" "src\F2802x_Sci.obj" "src\F2802x_Spi.obj" "src\F2802x_SysCtrl.obj" "src\F2802x_TempSensorConv.obj" "src\F2802x_usDelay.obj" "src\user_5110.obj" "src\user_5110lib.obj" 
 	-$(RM) "src\F2802x_CSMPasswords.pp" "src\F2802x_CodeStartBranch.pp" "src\F2802x_DisInt.pp" "src\F2802x_usDelay.pp" 
 	-@echo 'Finished clean'
 	-@echo ' '
@@ -156,3 +176,4 @@ clean:
 .SECONDARY:
 
 -include ../makefile.targets
+

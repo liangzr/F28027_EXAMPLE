@@ -22,9 +22,13 @@
 void InitSpi(void)
 {
    // Initialize SPI-A
-
+   SpiaRegs.SPICCR.bit.SPICHAR = 0x07;		//数据移送长度为8
+   SpiaRegs.SPICTL.bit.TALK = 1;    		//使能发送
+   SpiaRegs.SPICTL.bit.MASTER_SLAVE = 1;	//当前主机模式
+   SpiaRegs.SPIBRR = 14;
    //tbd...
-
+   SpiaRegs.SPICCR.bit.SPISWRESET = 1;
+   SpiaRegs.SPIPRI.bit.FREE = 1;
 }
 
 //---------------------------------------------------------------------------
@@ -86,6 +90,10 @@ void InitSpiaGpio()
     EDIS;
 }
 
+void spi_xmit8(unsigned char a)
+{
+    SpiaRegs.SPITXBUF = a;
+}
 //===========================================================================
 // End of file.
 //===========================================================================

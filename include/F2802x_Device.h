@@ -149,6 +149,8 @@ typedef long double     float64;
 #include "F2802x_Sci.h"                // SCI Registers
 #include "F2802x_SysCtrl.h"            // System Control/Power Modes
 #include "F2802x_XIntrupt.h"           // External Interrupts
+#include "user_5110.h"				   // LCD5110
+#include "stdio.h"
 
 #if (DSP28_28020PT||DSP28_28021PT||DSP28_28022PT||DSP28_28023PT||DSP28_28026PT||DSP28_28027PT)
 #define DSP28_COMP1    1

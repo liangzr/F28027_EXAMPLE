@@ -96,13 +96,6 @@ void ConfigAdc(void)
     AdcRegs.ADCSOC0CTL.bit.TRIGSEL = 1;
     AdcRegs.ADCSOC0CTL.bit.ACQPS = 6;
     //通道1－4,6－7
-    AdcRegs.ADCSOC1CTL.all = 0x0846;
-    AdcRegs.ADCSOC2CTL.all = 0x0846;
-    AdcRegs.ADCSOC3CTL.all = 0x0846;
-    AdcRegs.ADCSOC4CTL.all = 0x0846;
-    AdcRegs.ADCSOC6CTL.all = 0x0846;
-    AdcRegs.ADCSOC7CTL.all = 0x0846;
-
     EDIS;
 }
 /* AdcoffsetSelfCal-
