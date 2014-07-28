@@ -102,7 +102,6 @@ void ConfigAdc(void)
     AdcRegs.ADCSOC4CTL.all = 0x0846;
     AdcRegs.ADCSOC6CTL.all = 0x0846;
     AdcRegs.ADCSOC7CTL.all = 0x0846;
-
     EDIS;
 }
 /* AdcoffsetSelfCal-

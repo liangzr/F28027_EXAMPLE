@@ -29,7 +29,7 @@ extern void InitPeripherals(void);
 extern void InitECap(void);
 extern void InitECapGpio(void);
 extern void InitECap1Gpio(void);
-extern void InitEPwm(void);
+extern void InitEPwm(volatile struct EPWM_REGS *EPwm, float Freq, float PercentA, float PercentB);
 extern void InitEPwmGpio(void);
 extern void InitEPwm1Gpio(void);
 extern void InitEPwm2Gpio(void);

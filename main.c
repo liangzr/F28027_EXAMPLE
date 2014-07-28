@@ -26,7 +26,6 @@ extern Uint16 RamfuncsRunStart;
 
 
 void main(void)
-
 {
 	InitSysCtrl();
 	InitGpio();
